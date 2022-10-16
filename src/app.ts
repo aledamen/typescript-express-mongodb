@@ -10,5 +10,5 @@ app.use(cors())
 app.use(express.json())
 app.use(router)
 
-db().then(()=>  console.log('DB connected'))
-app.listen(PORT, ()=> console.log(`Server on port ${PORT}`))
+db().then(() => console.log('DB connected'))
+app.listen(PORT, () => console.log(`Server on port ${PORT}`))
