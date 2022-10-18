@@ -1,8 +1,7 @@
-import { Response } from "express";
+import { Response } from 'express'
 
 const handleHttp = (res: Response, error: string, errorRaw?: any) => {
-    res.status(500)
-    res.send({error})
+    res.status(500).send({ error, errorRaw })
 }
 
-export {handleHttp}
+export { handleHttp }
