@@ -1,8 +1,9 @@
-import { Router } from 'express'
-import { getOrder } from '../services/order'
+import { Router } from "express"
+import { getItems } from '../controllers/order'
+import { checkJwt } from '../middlewares/session'
 const router = Router()
 
-router.get('/', getOrder)
+router.get('/', checkJwt, getItems)
 
 
 export { router }

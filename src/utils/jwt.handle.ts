@@ -4,9 +4,11 @@ import 'dotenv/config'
 const SECRET = <string>process.env.SECRET
 
 const generateToken = (id: Types.ObjectId) => {
-    return sign({ id }, SECRET, { expiresIn: '2hs' })
+    return sign({ id }, SECRET, { expiresIn: '2h' })
 }
 
-const verifiyToken = () => {}
+const verifyToken = (jwt: string) => {
+    return verify(jwt, SECRET)
+}
 
-export { generateToken, verifiyToken }
+export { generateToken, verifyToken }

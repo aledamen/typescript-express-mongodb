@@ -1,8 +1,8 @@
 import { Car } from '../interfaces/car.interface'
 import ItemModel from '../models/item.model'
 
-const getOrder = async () => {
+const getOrders = async () => {
     return await ItemModel.find()
 }
 
-export {getOrder}
+export {getOrders}

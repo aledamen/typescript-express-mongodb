@@ -1,22 +1,15 @@
 import { Request, Response } from 'express'
-import { insertCar, getCars, getCar, updateCar, deleteCar } from '../services/item'
+import { RequestExt } from '../interfaces/req.interface'
+import { getOrders } from '../services/order'
 import { handleHttp } from '../utils/error.handle'
 
-const getItem = async (req: Request, res: Response) => {
+const getItems = async (req: RequestExt, res: Response) => {
     try {
-        const item = await getCar(req.params.id)
-        res.send(item ? item : 'NOT_FOUND')
-    } catch (e) {
-        handleHttp(res, 'ERROR_GET_ITEM')
-    }
-}
-const getItems = async (req: Request, res: Response) => {
-    try {
-        const items = await getCars()
-        res.send(items)
+        const items = await getOrders()
+        res.send({data:items, user:req.user})
     } catch (e) {
         handleHttp(res, 'ERROR_GET_ITEMS')
     }
 }
 
-export { getItem, getItems }
+export { getItems }
