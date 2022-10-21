@@ -1,19 +1,19 @@
 import { Request } from "express";
-import multer, { diskStorage } from "multer";
+import multer from "multer";
 
 const PATH_STORAGE = `${process.cwd()}/storage`;
 
-const storage = diskStorage({
-  destination(req: Request, file: Express.Multer.File, cb: any) {
-    cb(null, PATH_STORAGE);
+const storage = multer.diskStorage({
+  destination: function (req: Request, file: Express.Multer.File, cb: (error: Error | null, destination: string) => void) {
+    cb(null,PATH_STORAGE);
   },
-  filename(req: Request, file: Express.Multer.File, cb: any) {
+  filename: function (req: Request, file: Express.Multer.File, cb: (error: Error | null, destination: string) => void) {
     const ext = file.originalname.split(".").pop();
     const fileNameRandom = `image-${Date.now()}.${ext}`;
     cb(null, fileNameRandom);
   },
 });
 
-const multerMiddleware = multer({ storage });
+const upload = multer({ storage:storage });
 
-export default multerMiddleware;
+export default upload;

@@ -7,7 +7,7 @@ const generateToken = (id: Types.ObjectId) => {
     return sign({ id }, SECRET, { expiresIn: '2h' })
 }
 
-const verifyToken = (jwt: string) => {
+const verifyToken = (jwt:string) => {
     return verify(jwt, SECRET)
 }
 
