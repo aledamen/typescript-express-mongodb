@@ -1,3 +1,6 @@
-# My first project with typescript
+# Api typescript-express-mongodb
 
-### Modelo vista controlador
+## Caracteristicas
+- Carga de productos
+- Logueo con jwt
+- Carga de imagenes
